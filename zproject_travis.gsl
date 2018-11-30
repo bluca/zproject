@@ -469,14 +469,14 @@ default|default-Werror|default-with-docs|valgrind|clang-format-check)
     if \
 .      if defined (use.debian_name)
 .           if !(use.debian_name = '')
-\! (command -v dpkg-query >/dev/null 2>&1 && dpkg-query --list $(use.debian_name) >/dev/null 2>&1) || \\
+\! ((command -v dpkg-query >/dev/null 2>&1 && dpkg-query --list $(use.debian_name) >/dev/null 2>&1) || \\
 .           endif
 .      elsif defined (use.libname)
-\! (command -v dpkg-query >/dev/null 2>&1 && dpkg-query --list $(use.libname)-dev >/dev/null 2>&1) || \\
+\! ((command -v dpkg-query >/dev/null 2>&1 && dpkg-query --list $(use.libname)-dev >/dev/null 2>&1) || \\
 .      else
-\! (command -v dpkg-query >/dev/null 2>&1 && dpkg-query --list $(use.project)-dev >/dev/null 2>&1) || \\
+\! ((command -v dpkg-query >/dev/null 2>&1 && dpkg-query --list $(use.project)-dev >/dev/null 2>&1) || \\
 .      endif
-           (command -v brew >/dev/null 2>&1 && brew ls --versions $(use.project) >/dev/null 2>&1) \\
+           (command -v brew >/dev/null 2>&1 && brew ls --versions $(use.project) >/dev/null 2>&1)) \\
     ; then
         echo ""
 .       if ! defined (use.repository) & ! defined (use.tarball)
